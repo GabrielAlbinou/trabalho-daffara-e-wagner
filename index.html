@@ -4,22 +4,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Trabalho</title>
+  <title>Cadastro Cliente</title>
   <link href="estilo.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
   <script src="script.js"></script>
+  <h1 class="page-header">Cadastro do Cliente</h1>
   <form>
-    <label for="name">Nome do cliente:</label>
-    <input type="text" id="name" name="name" placeholder="Nome do cliente">
+    <label for="name">
+      <h3>Nome do cliente:</h3>
+    </label>
+    <input type="text" id="name" name="name" placeholder="Nome do cliente" required>
     <br>
-    <label for="email">Email do cliente:</label>
-    <input type="text" id="email" name="email" placeholder="Email do cliente">
+    <label for="email">
+      <h3>Email do cliente:</h3>
+    </label>
+    <input type="text" id="email" name="email" placeholder="Email do cliente" required>
     <br>
-    <label for="phone">Número de telefone:</label>
-    <input type="number" id="phone" name="phone" placeholder="número de telefone">
-    <label for="phoneType">Marcador:</label>
+    <label for="phone">
+      <h3>Número de telefone:</h3>
+    </label>
+    <input type="text" id="phone" name="phone" placeholder="(00) 000000-0000">
+    <label for=" phoneType">
+      <h3>Marcador:</h3>
+    </label>
     <select id="phoneType" name="phoneType">
       <option value="nenhum">Nenhum Marcador</option>
       <option value="celular">Celular</option>
@@ -32,13 +41,38 @@
       <option value="outros">Outros</option>
     </select>
     <br>
-    <label for="address">Endereço do cliente:</label>
-    <input type="text" id="address" name="address" placeholder="endereço do cliente">
+    <label for="address">
+      <h3>Endereço do cliente:</h3>
+    </label>
+    <input type="text" id="address" name="address" placeholder="Endereço do cliente" required>
     <br>
-    <label for="CPF">CPF:</label>
-    <input type="number" id="CPF" name="CPF" placeholder="xxx.xxx.xxx-xx">
+    <label for="CPF">
+      <h3>CPF:</h3>
+    </label>
+    <input type="text" id="CPF" name="CPF" placeholder="xxx.xxx.xxx-xx" required>
+    <br>
+    <label for="codigo">
+      <h3>Passaporte:</h3>
+    </label>
+    <input type="text" id="passaporte" name="passaporte" placeholder="AA000000" required>
+    <br>
+    <label for="codigo">
+      <h3>Codigo:</h3>
+    </label>
+    <input type="text" id="codigo" name="codigo" placeholder="">
+    <br>
+    <label for="estado">
+      <h3>Estado:</h3>
+    </label>
+    <input type="text" id="estado" name="estado" placeholder="Estado">
+    <br>
+    <label for="cidade">
+      <h3>Cidade:</h3>
+    </label>
+    <input type="text" id="cidade" name="cidade" placeholder="Cidade">
     <br>
   </form>
+  <button>cadastrar</button>
 </body>
 
 </html>
