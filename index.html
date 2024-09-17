@@ -11,7 +11,7 @@
 <body>
   <script src="script.js"></script>
   <h1 class="page-header">Cadastro do Cliente</h1>
-  <form>
+    <div class="cad">
     <label for="name">
       <h3>Nome do cliente:</h3>
     </label>
@@ -71,8 +71,9 @@
     </label>
     <input type="text" id="cidade" name="cidade" placeholder="Cidade">
     <br>
-  </form>
-  <button>cadastrar</button>
+    <p>nome: <span id="nome"></span></p>
+  </div>
+  <button onclick="cadastro_cl()">cadastrar</button>
 </body>
 
 </html>

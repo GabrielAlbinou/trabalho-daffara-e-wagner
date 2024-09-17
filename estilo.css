@@ -18,7 +18,7 @@ html {
 
 }
 
-form {
+.cad {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,4 +82,7 @@ button {
 
 h1 {
   text-align: center;
+}
+p,span{
+
 }
