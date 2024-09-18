@@ -21,3 +21,17 @@ function cadastro_cl(){
     document.getElementById('10').innerText = "estado do gay é: " + est_cl;
     document.getElementById('11').innerText = "cidade do gay é: " + city_cl;
 }
+
+function cadastro_prod(){
+    const desc = document.getElementById('descricao').value;
+    const nome = document.getElementById('nome').value;
+    const forn = document.getElementById('fornecedor').value;
+    const codi = document.getElementById('codigo').value;
+    const unid = document.getElementById('unidade').value;
+    const data = document.getElementById('data').value;
+    const comp = document.getElementById('preco_compra').value;
+    const vend = document.getElementById('preco_').value;
+    const prod = document.getElementById('descricao').value;
+    const fabr = document.getElementById('descricao').value;
+    document.getElementById('ds').innerText = desc;
+}
