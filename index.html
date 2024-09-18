@@ -15,21 +15,21 @@
     <label for="name">
       <h3>Nome do cliente:</h3>
     </label>
-    <input type="text" id="name" name="name" placeholder="Nome do cliente" required>
+    <input type="text" id="name_cl" name="name" placeholder="Nome do cliente" required>
     <br>
     <label for="email">
       <h3>Email do cliente:</h3>
     </label>
-    <input type="text" id="email" name="email" placeholder="Email do cliente" required>
+    <input type="text" id="email_cl" name="email" placeholder="Email do cliente" required>
     <br>
     <label for="phone">
       <h3>Número de telefone:</h3>
     </label>
-    <input type="text" id="phone" name="phone" placeholder="(00) 000000-0000">
+    <input type="text" id="phone_cl" name="phone" placeholder="(00) 000000-0000">
     <label for=" phoneType">
       <h3>Marcador:</h3>
     </label>
-    <select id="phoneType" name="phoneType">
+    <select id="phoneType_cl" name="phoneType">
       <option value="nenhum">Nenhum Marcador</option>
       <option value="celular">Celular</option>
       <option value="comercial">Comercial</option>
@@ -44,34 +44,45 @@
     <label for="address">
       <h3>Endereço do cliente:</h3>
     </label>
-    <input type="text" id="address" name="address" placeholder="Endereço do cliente" required>
+    <input type="text" id="address_cl" name="address" placeholder="Endereço do cliente" required>
     <br>
-    <label for="CPF">
-      <h3>CPF:</h3>
+    <label for="Doc">
+      <h3>Documento:</h3>
     </label>
-    <input type="text" id="CPF" name="CPF" placeholder="xxx.xxx.xxx-xx" required>
+    <input type="text" id="Doc_cl" name="Doc" placeholder="digite seu documento" required>
     <br>
-    <label for="codigo">
-      <h3>Passaporte:</h3>
+    <label for="tp_doc">
+      <h3>Tipo de Documento:</h3>
     </label>
-    <input type="text" id="passaporte" name="passaporte" placeholder="AA000000" required>
-    <br>
+    <select id="tp_doc_cl" name="tipodoc">
+      <option value="CPF">CPF</option>
+      <option value="Passaporte">Passaporte</option>
+  </select><br>
     <label for="codigo">
       <h3>Codigo:</h3>
     </label>
-    <input type="text" id="codigo" name="codigo" placeholder="">
+    <input type="text" id="codigo_cl" name="codigo" placeholder="">
     <br>
     <label for="estado">
       <h3>Estado:</h3>
     </label>
-    <input type="text" id="estado" name="estado" placeholder="Estado">
+    <input type="text" id="estado_cl" name="estado" placeholder="Estado">
     <br>
     <label for="cidade">
       <h3>Cidade:</h3>
     </label>
-    <input type="text" id="cidade" name="cidade" placeholder="Cidade">
+    <input type="text" id="cidade_cl" name="cidade" placeholder="Cidade">
     <br>
-    <p>nome: <span id="nome"></span></p>
+    <p><span id="2"></span></p><br>
+    <p><span id="3"></span></p><br>
+    <p><span id="4"></span></p><br>
+    <p><span id="5"></span></p><br>
+    <p><span id="6"></span></p><br>
+    <p><span id="7"></span></p><br>
+    <p><span id="8"></span></p><br>
+    <p><span id="9"></span></p><br>
+    <p><span id="10"></span></p><br>
+    <p><span id="11"></span></p><br>
   </div>
   <button onclick="cadastro_cl()">cadastrar</button>
 </body>
