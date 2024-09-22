@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cadastro de Quartos</title>
+    <link href="estilo.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <script src="script.js"></script>
+    <h1>Cadastro de Quartos</h1>
+    <div class="cad">
+        <h3><label for="numero_quarto">Número do Quarto:</label></h3>
+        <input type="number" id="numero_quarto" name="numero_quarto" required><br>
+        <h3><label for="tipo_quarto">Tipo de Quarto:</label></h3>
+        <select id="tipo_quarto" name="tipo_quarto">
+            <option value="simples">Simples</option>
+            <option value="duplo">Duplo</option>
+            <option value="suite">Suíte</option>
+            <!-- Adicione mais opções aqui conforme necessário -->
+        </select><br>
+        <button type="submit" onclick="cadastro_quarto()">Cadastrar</button>
+
+        <p>Número do Quarto: <span id="nq"></span></p>
+        <p>Tipo de Quarto: <span id="tq"></span></p>
+    </div>
+
+    <script>
+        function cadastro_quarto() {
+            document.getElementById('nq').innerText = document.getElementById('numero_quarto').value;
+            document.getElementById('tq').innerText = document.getElementById('tipo_quarto').value;
+        }
+    </script>
+</body>
+
+</html>

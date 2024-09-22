@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cadastro de Tipo de Quarto</title>
+    <link href="estilo.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <script src="script.js"></script>
+    <h1>Cadastro de Tipo de Quarto</h1>
+    <div class="cad">
+        <h3><label for="id_quarto">ID do Quarto:</label></h3>
+        <input type="text" id="id_quarto" name="id_quarto" value="" readonly><br>
+        <h3><label for="tipo_quarto">Tipo de Quarto:</label></h3>
+        <select id="tipo_quarto" name="tipo_quarto">
+            <option value="simples">Simples</option>
+            <option value="duplo">Duplo</option>
+            <option value="suite">Suíte</option>
+            <!-- Adicione mais opções aqui conforme necessário -->
+        </select><br>
+        <h3><label for="caracteristicas">Características do Quarto:</label></h3>
+        <textarea id="caracteristicas" name="caracteristicas" rows="4" cols="50"></textarea><br>
+        <h3>Equipamentos:</h3>
+        <input type="checkbox" id="ar_condicionado" name="equipamentos" value="Ar Condicionado">
+        <label for="ar_condicionado">Ar Condicionado</label><br>
+        <input type="checkbox" id="tv" name="equipamentos" value="TV">
+        <label for="tv">TV</label><br>
+        <input type="checkbox" id="frigobar" name="equipamentos" value="Frigobar">
+        <label for="frigobar">Frigobar</label><br>
+        <input type="checkbox" id="camas" name="equipamentos" value="Camas">
+        <label for="camas">Quantidade de Camas</label><br>
+        <input type="checkbox" id="banheiros" name="equipamentos" value="Banheiros">
+        <label for="banheiros">Banheiros</label><br>
+        <input type="checkbox" id="armarios" name="equipamentos" value="Armários">
+        <label for="armarios">Armários</label><br>
+        <input type="checkbox" id="outros" name="equipamentos" value="Outros">
+        <label for="outros">Outros</label><br>
+        <h3><label for="quantidade_itens">Quantidade de Itens:</label></h3>
+        <input type="number" id="quantidade_itens" name="quantidade_itens" required><br>
+        <h3><label for="descricao">Descrição do Quarto:</label></h3>
+        <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea><br>
+        <button type="submit" onclick="cadastro_tipo_quarto()">Cadastrar</button>
+
+        <p>ID do Quarto: <span id="idq"></span></p>
+        <p>Tipo de Quarto: <span id="tq"></span></p>
+        <p>Características do Quarto: <span id="car"></span></p>
+        <p>Equipamentos: <span id="equip"></span></p>
+        <p>Quantidade de Itens: <span id="qi"></span></p>
+        <p>Descrição do Quarto: <span id="desc"></span></p>
+    </div>
+
+    <script>
+        function gerarIdQuarto() {
+            return Math.floor(Math.random() * 10000); // Gera um ID aleatório entre 0 e 9999
+        }
+
+        function cadastro_tipo_quarto() {
+            document.getElementById('idq').innerText = document.getElementById('id_quarto').value;
+            document.getElementById('tq').innerText = document.getElementById('tipo_quarto').value;
+            document.getElementById('car').innerText = document.getElementById('caracteristicas').value;
+            
+            let equipamentosSelecionados = [];
+            document.querySelectorAll('input[name="equipamentos"]:checked').forEach((checkbox) => {
+                equipamentosSelecionados.push(checkbox.value);
+            });
+            document.getElementById('equip').innerText = equipamentosSelecionados.join(', ');
+
+            document.getElementById('qi').innerText = document.getElementById('quantidade_itens').value;
+            document.getElementById('desc').innerText = document.getElementById('descricao').value;
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('id_quarto').value = gerarIdQuarto();
+        });
+    </script>
+</body>
+
+</html>

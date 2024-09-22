@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cadastro de Serviços</title>
+    <link href="estilo.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <script src="script.js"></script>
+    <h1>Cadastro de Serviços</h1>
+    <div class="cad">
+        <h3><label for="nome_servico">Nome do Serviço:</label></h3>
+        <input type="text" id="nome_servico" name="nome_servico" required><br>
+        <h3><label for="quantidade">Quantidade:</label></h3>
+        <input type="number" id="quantidade" name="quantidade" required><br>
+        <h3><label for="tipo_servico">Tipo de Serviço:</label></h3>
+        <select id="tipo_servico" name="tipo_servico">
+            <option value="limpeza">Limpeza</option>
+            <option value="manutencao">Manutenção</option>
+            <option value="alimentacao">Alimentação</option>
+            <option value="lavanderia">Lavanderia</option>
+            <!-- Adicione mais opções aqui conforme necessário -->
+        </select><br>
+        <h3><label for="id_quarto">ID do Quarto:</label></h3>
+        <input type="text" id="id_quarto" name="id_quarto" required><br>
+        <button type="submit" onclick="cadastro_servico()">Cadastrar</button>
+
+        <p>Nome do Serviço: <span id="ns"></span></p>
+        <p>Quantidade: <span id="qt"></span></p>
+        <p>Tipo de Serviço: <span id="ts"></span></p>
+        <p>ID do Quarto: <span id="idq"></span></p>
+    </div>
+
+    <script>
+        function cadastro_servico() {
+            document.getElementById('ns').innerText = document.getElementById('nome_servico').value;
+            document.getElementById('qt').innerText = document.getElementById('quantidade').value;
+            document.getElementById('ts').innerText = document.getElementById('tipo_servico').value;
+            document.getElementById('idq').innerText = document.getElementById('id_quarto').value;
+        }
+    </script>
+</body>
+
+</html>
