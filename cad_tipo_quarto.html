@@ -23,21 +23,16 @@
         </select><br>
         <h3><label for="caracteristicas">Características do Quarto:</label></h3>
         <textarea id="caracteristicas" name="caracteristicas" rows="4" cols="50"></textarea><br>
-        <h3>Equipamentos:</h3>
-        <input type="checkbox" id="ar_condicionado" name="equipamentos" value="Ar Condicionado">
-        <label for="ar_condicionado">Ar Condicionado</label><br>
-        <input type="checkbox" id="tv" name="equipamentos" value="TV">
-        <label for="tv">TV</label><br>
-        <input type="checkbox" id="frigobar" name="equipamentos" value="Frigobar">
-        <label for="frigobar">Frigobar</label><br>
-        <input type="checkbox" id="camas" name="equipamentos" value="Camas">
-        <label for="camas">Quantidade de Camas</label><br>
-        <input type="checkbox" id="banheiros" name="equipamentos" value="Banheiros">
-        <label for="banheiros">Banheiros</label><br>
-        <input type="checkbox" id="armarios" name="equipamentos" value="Armários">
-        <label for="armarios">Armários</label><br>
-        <input type="checkbox" id="outros" name="equipamentos" value="Outros">
-        <label for="outros">Outros</label><br>
+        <h3><label for="equipamentos">Equipamentos:</label></h3>
+        <select id="equipamentos" name="equipamentos">
+            <option value="ar_condicionado">Ar Condicionado</option>
+            <option value="tv">TV</option>
+            <option value="frigobar">Frigobar</option>
+            <option value="camas">Camas</option>
+            <option value="banheiros">Banheiros</option>
+            <option value="armarios">Armários</option>
+            <option value="outros">Outros</option>
+        </select><br>
         <h3><label for="quantidade_itens">Quantidade de Itens:</label></h3>
         <input type="number" id="quantidade_itens" name="quantidade_itens" required><br>
         <h3><label for="descricao">Descrição do Quarto:</label></h3>
@@ -61,13 +56,7 @@
             document.getElementById('idq').innerText = document.getElementById('id_quarto').value;
             document.getElementById('tq').innerText = document.getElementById('tipo_quarto').value;
             document.getElementById('car').innerText = document.getElementById('caracteristicas').value;
-            
-            let equipamentosSelecionados = [];
-            document.querySelectorAll('input[name="equipamentos"]:checked').forEach((checkbox) => {
-                equipamentosSelecionados.push(checkbox.value);
-            });
-            document.getElementById('equip').innerText = equipamentosSelecionados.join(', ');
-
+            document.getElementById('equip').innerText = document.getElementById('equipamentos').value;
             document.getElementById('qi').innerText = document.getElementById('quantidade_itens').value;
             document.getElementById('desc').innerText = document.getElementById('descricao').value;
         }
