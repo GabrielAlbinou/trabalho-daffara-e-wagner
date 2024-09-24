@@ -6,45 +6,137 @@
     <meta name="viewport" content="width=device-width">
     <title>Cadastro de Tipo de Quarto</title>
     <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            flex: 1;
+            min-width: 150px;
+            padding-right: 5px;
+            text-align: right;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            flex: 2;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 8px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 15px;
+        }
+
+        .result p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <script src="script.js"></script>
-    <h1>Cadastro de Tipo de Quarto</h1>
-    <div class="cad">
-        <h3><label for="id_quarto">ID do Quarto:</label></h3>
-        <input type="text" id="id_quarto" name="id_quarto" value="" readonly><br>
-        <h3><label for="tipo_quarto">Tipo de Quarto:</label></h3>
-        <select id="tipo_quarto" name="tipo_quarto">
-            <option value="simples">Simples</option>
-            <option value="duplo">Duplo</option>
-            <option value="suite">Suíte</option>
-            <!-- Adicione mais opções aqui conforme necessário -->
-        </select><br>
-        <h3><label for="caracteristicas">Características do Quarto:</label></h3>
-        <textarea id="caracteristicas" name="caracteristicas" rows="4" cols="50"></textarea><br>
-        <h3><label for="equipamentos">Equipamentos:</label></h3>
-        <select id="equipamentos" name="equipamentos">
-            <option value="ar_condicionado">Ar Condicionado</option>
-            <option value="tv">TV</option>
-            <option value="frigobar">Frigobar</option>
-            <option value="camas">Camas</option>
-            <option value="banheiros">Banheiros</option>
-            <option value="armarios">Armários</option>
-            <option value="outros">Outros</option>
-        </select><br>
-        <h3><label for="quantidade_itens">Quantidade de Itens:</label></h3>
-        <input type="number" id="quantidade_itens" name="quantidade_itens" required><br>
-        <h3><label for="descricao">Descrição do Quarto:</label></h3>
-        <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea><br>
-        <button type="submit" onclick="cadastro_tipo_quarto()">Cadastrar</button>
+    <div class="container">
+        <h1>Cadastro de Tipo de Quarto</h1>
+        <div class="form-group">
+            <label for="id_quarto">ID do Quarto:</label>
+            <input type="text" id="id_quarto" name="id_quarto" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="tipo_quarto">Tipo de Quarto:</label>
+            <select id="tipo_quarto" name="tipo_quarto">
+                <option value="simples">Simples</option>
+                <option value="duplo">Duplo</option>
+                <option value="suite">Suíte</option>
+                <!-- Adicione mais opções aqui conforme necessário -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="caracteristicas">Características do Quarto:</label>
+            <textarea id="caracteristicas" name="caracteristicas" rows="4" cols="50"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="equipamentos">Equipamentos:</label>
+            <select id="equipamentos" name="equipamentos">
+                <option value="ar_condicionado">Ar Condicionado</option>
+                <option value="tv">TV</option>
+                <option value="frigobar">Frigobar</option>
+                <option value="camas">Camas</option>
+                <option value="banheiros">Banheiros</option>
+                <option value="armarios">Armários</option>
+                <option value="outros">Outros</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="quantidade_itens">Quantidade de Itens:</label>
+            <input type="number" id="quantidade_itens" name="quantidade_itens" required>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição do Quarto:</label>
+            <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" onclick="cadastro_tipo_quarto()">Cadastrar</button>
+        </div>
 
-        <p>ID do Quarto: <span id="idq"></span></p>
-        <p>Tipo de Quarto: <span id="tq"></span></p>
-        <p>Características do Quarto: <span id="car"></span></p>
-        <p>Equipamentos: <span id="equip"></span></p>
-        <p>Quantidade de Itens: <span id="qi"></span></p>
-        <p>Descrição do Quarto: <span id="desc"></span></p>
+        <div class="result">
+            <p>ID do Quarto: <span id="idq"></span></p>
+            <p>Tipo de Quarto: <span id="tq"></span></p>
+            <p>Características do Quarto: <span id="car"></span></p>
+            <p>Equipamentos: <span id="equip"></span></p>
+            <p>Quantidade de Itens: <span id="qi"></span></p>
+            <p>Descrição do Quarto: <span id="desc"></span></p>
+        </div>
     </div>
 
     <script>

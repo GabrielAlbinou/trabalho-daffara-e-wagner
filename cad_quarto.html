@@ -6,25 +6,104 @@
     <meta name="viewport" content="width=device-width">
     <title>Cadastro de Quartos</title>
     <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            flex: 1;
+            min-width: 150px;
+            padding-right: 5px;
+            text-align: right;
+        }
+
+        .form-group input,
+        .form-group select {
+            flex: 2;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 8px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 15px;
+        }
+
+        .result p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <script src="script.js"></script>
-    <h1>Cadastro de Quartos</h1>
-    <div class="cad">
-        <h3><label for="numero_quarto">Número do Quarto:</label></h3>
-        <input type="number" id="numero_quarto" name="numero_quarto" required><br>
-        <h3><label for="tipo_quarto">Tipo de Quarto:</label></h3>
-        <select id="tipo_quarto" name="tipo_quarto">
-            <option value="simples">Simples</option>
-            <option value="duplo">Duplo</option>
-            <option value="suite">Suíte</option>
-            <!-- Adicione mais opções aqui conforme necessário -->
-        </select><br>
-        <button type="submit" onclick="cadastro_quarto()">Cadastrar</button>
+    <div class="container">
+        <h1>Cadastro de Quartos</h1>
+        <div class="form-group">
+            <label for="numero_quarto">Número do Quarto:</label>
+            <input type="number" id="numero_quarto" name="numero_quarto" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo_quarto">Tipo de Quarto:</label>
+            <select id="tipo_quarto" name="tipo_quarto">
+                <option value="simples">Simples</option>
+                <option value="duplo">Duplo</option>
+                <option value="suite">Suíte</option>
+                <!-- Adicione mais opções aqui conforme necessário -->
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" onclick="cadastro_quarto()">Cadastrar</button>
+        </div>
 
-        <p>Número do Quarto: <span id="nq"></span></p>
-        <p>Tipo de Quarto: <span id="tq"></span></p>
+        <div class="result">
+            <p>Número do Quarto: <span id="nq"></span></p>
+            <p>Tipo de Quarto: <span id="tq"></span></p>
+        </div>
     </div>
 
     <script>

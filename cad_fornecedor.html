@@ -6,26 +6,108 @@
     <meta name="viewport" content="width=device-width">
     <title>Cadastro de Fornecedores</title>
     <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            flex: 1;
+            min-width: 150px;
+            padding-right: 5px;
+            text-align: right;
+        }
+
+        .form-group input {
+            flex: 2;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 8px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 15px;
+        }
+
+        .result p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <script src="script.js"></script>
-    <h1>Cadastro de Fornecedores</h1>
-    <div class="cad">
-        <h3><label for="nome_completo">Nome Completo:</label></h3>
-        <input type="text" id="nome_completo" name="nome_completo" required><br>
-        <h3><label for="cnpj">CNPJ:</label></h3>
-        <input type="text" id="cnpj" name="cnpj" required><br>
-        <h3><label for="fabricante">Fabricante:</label></h3>
-        <input type="text" id="fabricante" name="fabricante" required><br>
-        <h3><label for="endereco">Endereço:</label></h3>
-        <input type="text" id="endereco" name="endereco" required><br>
-        <button type="submit" onclick="cadastro_fornecedor()">Cadastrar</button>
+    <div class="container">
+        <h1>Cadastro de Fornecedores</h1>
+        <div class="form-group">
+            <label for="nome_completo">Nome Completo:</label>
+            <input type="text" id="nome_completo" name="nome_completo" required>
+        </div>
+        <div class="form-group">
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" required>
+        </div>
+        <div class="form-group">
+            <label for="fabricante">Fabricante:</label>
+            <input type="text" id="fabricante" name="fabricante" required>
+        </div>
+        <div class="form-group">
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" onclick="cadastro_fornecedor()">Cadastrar</button>
+        </div>
 
-        <p>Nome Completo: <span id="nc"></span></p>
-        <p>CNPJ: <span id="cnpj_span"></span></p>
-        <p>Fabricante: <span id="fab"></span></p>
-        <p>Endereço: <span id="end"></span></p>
+        <div class="result">
+            <p>Nome Completo: <span id="nc"></span></p>
+            <p>CNPJ: <span id="cnpj_span"></span></p>
+            <p>Fabricante: <span id="fab"></span></p>
+            <p>Endereço: <span id="end"></span></p>
+        </div>
     </div>
 
     <script>

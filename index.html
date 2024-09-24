@@ -2,89 +2,173 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Cadastro Cliente</title>
-  <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cadastro Cliente</title>
+    <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alinha ao topo */
+            height: 100vh;
+            background-color: #f0f0f0;
+            padding-top: 20px; /* Adiciona espaço no topo */
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            flex: 1;
+            min-width: 150px;
+            padding-right: 5px;
+            text-align: right;
+        }
+
+        .form-group input,
+        .form-group select {
+            flex: 2;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 8px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 15px;
+        }
+
+        .result p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 
 <body>
-  <script src="script.js"></script>
-  <h1 class="page-header">Cadastro do Cliente</h1>
-    <div class="cad">
-    <label for="name">
-      <h3>Nome do cliente:</h3>
-    </label>
-    <input type="text" id="name_cl" name="name" placeholder="Nome do cliente" required>
-    <br>
-    <label for="email">
-      <h3>Email do cliente:</h3>
-    </label>
-    <input type="text" id="email_cl" name="email" placeholder="Email do cliente" required>
-    <br>
-    <label for="phone">
-      <h3>Número de telefone:</h3>
-    </label>
-    <input type="text" id="phone_cl" name="phone" placeholder="(00) 000000-0000">
-    <label for=" phoneType">
-      <h3>Marcador:</h3>
-    </label>
-    <select id="phoneType_cl" name="phoneType">
-      <option value="nenhum">Nenhum Marcador</option>
-      <option value="celular">Celular</option>
-      <option value="comercial">Comercial</option>
-      <option value="casa">Casa</option>
-      <option value="principal">Principal</option>
-      <option value="faxcomer">Fax comercial</option>
-      <option value="faxresi">Fax residencial</option>
-      <option value="pager">Pager</option>
-      <option value="outros">Outros</option>
-    </select>
-    <br>
-    <label for="address">
-      <h3>Endereço do cliente:</h3>
-    </label>
-    <input type="text" id="address_cl" name="address" placeholder="Endereço do cliente" required>
-    <br>
-    <label for="Doc">
-      <h3>Documento:</h3>
-    </label>
-    <input type="text" id="Doc_cl" name="Doc" placeholder="digite seu documento" required>
-    <br>
-    <label for="tp_doc">
-      <h3>Tipo de Documento:</h3>
-    </label>
-    <select id="tp_doc_cl" name="tipodoc">
-      <option value="CPF">CPF</option>
-      <option value="Passaporte">Passaporte</option>
-  </select><br>
-    <label for="codigo">
-      <h3>Codigo:</h3>
-    </label>
-    <input type="text" id="codigo_cl" name="codigo" placeholder="">
-    <br>
-    <label for="estado">
-      <h3>Estado:</h3>
-    </label>
-    <input type="text" id="estado_cl" name="estado" placeholder="Estado">
-    <br>
-    <label for="cidade">
-      <h3>Cidade:</h3>
-    </label>
-    <input type="text" id="cidade_cl" name="cidade" placeholder="Cidade">
-    <br>
-    <p><span id="2"></span></p><br>
-    <p><span id="3"></span></p><br>
-    <p><span id="4"></span></p><br>
-    <p><span id="5"></span></p><br>
-    <p><span id="6"></span></p><br>
-    <p><span id="7"></span></p><br>
-    <p><span id="8"></span></p><br>
-    <p><span id="9"></span></p><br>
-    <p><span id="10"></span></p><br>
-    <p><span id="11"></span></p><br>
-  </div>
-  <button onclick="cadastro_cl()">cadastrar</button>
+    <div class="container">
+        <h1>Cadastro do Cliente</h1>
+        <div class="form-group">
+            <label for="name_cl">Nome do cliente:</label>
+            <input type="text" id="name_cl" name="name" placeholder="Nome do cliente" required>
+        </div>
+        <div class="form-group">
+            <label for="email_cl">Email do cliente:</label>
+            <input type="text" id="email_cl" name="email" placeholder="Email do cliente" required>
+        </div>
+        <div class="form-group">
+            <label for="phone_cl">Número de telefone:</label>
+            <input type="text" id="phone_cl" name="phone" placeholder="(00) 00000-0000">
+        </div>
+        <div class="form-group">
+            <label for="phoneType_cl">Marcador:</label>
+            <select id="phoneType_cl" name="phoneType">
+                <option value="nenhum">Nenhum Marcador</option>
+                <option value="celular">Celular</option>
+                <option value="comercial">Comercial</option>
+                <option value="casa">Casa</option>
+                <option value="principal">Principal</option>
+                <option value="faxcomer">Fax comercial</option>
+                <option value="faxresi">Fax residencial</option>
+                <option value="pager">Pager</option>
+                <option value="outros">Outros</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address_cl">Endereço do cliente:</label>
+            <input type="text" id="address_cl" name="address" placeholder="Endereço do cliente" required>
+        </div>
+        <div class="form-group">
+            <label for="Doc_cl">Documento:</label>
+            <input type="text" id="Doc_cl" name="Doc" placeholder="Digite seu documento" required>
+        </div>
+        <div class="form-group">
+            <label for="tp_doc_cl">Tipo de Documento:</label>
+            <select id="tp_doc_cl" name="tipodoc">
+                <option value="CPF">CPF</option>
+                <option value="Passaporte">Passaporte</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="codigo_cl">Código:</label>
+            <input type="text" id="codigo_cl" name="codigo" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="estado_cl">Estado:</label>
+            <input type="text" id="estado_cl" name="estado" placeholder="Estado">
+        </div>
+        <div class="form-group">
+            <label for="cidade_cl">Cidade:</label>
+            <input type="text" id="cidade_cl" name="cidade" placeholder="Cidade">
+        </div>
+        <div class="form-group">
+            <button type="submit" onclick="cadastro_cl()">Cadastrar</button>
+        </div>
+
+        <div class="result">
+            <p>Nome do cliente: <span id="name_result"></span></p>
+            <p>Email do cliente: <span id="email_result"></span></p>
+            <p>Número de telefone: <span id="phone_result"></span></p>
+            <p>Marcador: <span id="phoneType_result"></span></p>
+            <p>Endereço do cliente: <span id="address_result"></span></p>
+            <p>Documento: <span id="Doc_result"></span></p>
+            <p>Tipo de Documento: <span id="tp_doc_result"></span></p>
+            <p>Código: <span id="codigo_result"></span></p>
+            <p>Estado: <span id="estado_result"></span></p>
+            <p>Cidade: <span id="cidade_result"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function cadastro_cl() {
+            document.getElementById('name_result').innerText = document.getElementById('name_cl').value;
+            document.getElementById('email_result').innerText = document.getElementById('email_cl').value;
+            document.getElementById('phone_result').innerText = document.getElementById('phone_cl').value;
+            document.getElementById('phoneType_result').innerText = document.getElementById('phoneType_cl').value;
+            document.getElementById('address_result').innerText = document.getElementById('address_cl').value;
+            document.getElementById('Doc_result').innerText = document.getElementById('Doc_cl').value;
+            document.getElementById('tp_doc_result').innerText = document.getElementById('tp_doc_cl').value;
+            document.getElementById('codigo_result').innerText = document.getElementById('codigo_cl').value;
+            document.getElementById('estado_result').innerText = document.getElementById('estado_cl').value;
+            document.getElementById('cidade_result').innerText = document.getElementById('cidade_cl').value;
+        }
+    </script>
 </body>
 
 </html>
