@@ -6,86 +6,10 @@
     <meta name="viewport" content="width=device-width">
     <title>Cadastro de Tipo de Quarto</title>
     <link href="estilo.css" rel="stylesheet" type="text/css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .form-group label {
-            flex: 1;
-            min-width: 150px;
-            padding-right: 5px;
-            text-align: right;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            flex: 2;
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-left: 5px;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-        }
-
-        .form-group button {
-            width: 100%;
-            padding: 8px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .form-group button:hover {
-            background-color: #0056b3;
-        }
-
-        .result {
-            margin-top: 15px;
-        }
-
-        .result p {
-            margin: 5px 0;
-        }
-    </style>
+    <script src="script.js"></script>
 </head>
 
-<body>
+<body class="body_t">
     <div class="container">
         <h1>Cadastro de Tipo de Quarto</h1>
         <div class="form-group">
@@ -129,34 +53,10 @@
             <button type="submit" onclick="cadastro_tipo_quarto()">Cadastrar</button>
         </div>
 
-        <div class="result">
-            <p>ID do Quarto: <span id="idq"></span></p>
-            <p>Tipo de Quarto: <span id="tq"></span></p>
-            <p>Características do Quarto: <span id="car"></span></p>
-            <p>Equipamentos: <span id="equip"></span></p>
-            <p>Quantidade de Itens: <span id="qi"></span></p>
-            <p>Descrição do Quarto: <span id="desc"></span></p>
-        </div>
+        
     </div>
 
-    <script>
-        function gerarIdQuarto() {
-            return Math.floor(Math.random() * 10000); // Gera um ID aleatório entre 0 e 9999
-        }
-
-        function cadastro_tipo_quarto() {
-            document.getElementById('idq').innerText = document.getElementById('id_quarto').value;
-            document.getElementById('tq').innerText = document.getElementById('tipo_quarto').value;
-            document.getElementById('car').innerText = document.getElementById('caracteristicas').value;
-            document.getElementById('equip').innerText = document.getElementById('equipamentos').value;
-            document.getElementById('qi').innerText = document.getElementById('quantidade_itens').value;
-            document.getElementById('desc').innerText = document.getElementById('descricao').value;
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.getElementById('id_quarto').value = gerarIdQuarto();
-        });
-    </script>
+    
 </body>
 
 </html>
