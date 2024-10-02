@@ -10,6 +10,8 @@ function cadastro_cl() {
     const estado_cl = document.getElementById('estado_cl').value;
     const cidade_cl = document.getElementById('cidade_cl').value;
 
+    document.getElementById('teste').innerText = na_cl
+
 }
 
 function cadastro_prod(){
@@ -30,6 +32,8 @@ function cadastro_fornecedor() {
     const cnpj = document.getElementById('cnpj').value;
     const fabr = document.getElementById('fabricante').value;
     const end = document.getElementById('endereco').value;
+
+    document.getElementById('teste2').innerText = cnpj
 }
 
 function gerarIdFuncionario() {
