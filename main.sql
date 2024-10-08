@@ -1,5 +1,5 @@
-create table cliente(
-  id int primary key AUTOINCREMENT,
+create table if not EXISTS cliente(
+  id integer primary key AUTOINCREMENT,
   nome TEXT NOT NULL,
   email TEXT NOT NULL,
   telefone TEXT NOT NULL,
@@ -12,21 +12,23 @@ create table cliente(
   cidade TEXT
 );
 
-create table quarto(
-  numero INT primary key,
-  tipo_quarto_id INT NOT NULL,
+create table if not EXISTS quarto(
+  numero integer primary key,
+  tipo_quarto_id int NOT NULL,
   foreign key(tipo_quarto_id) references tipo_quarto(id)
 );
-create table tipo_quarto(
-  tipo_quarto_id INT primary key autoincrement,
+
+create table if not EXISTS tipo_quarto(
+  tipo_quarto_id integer primary key autoincrement,
   tipo_quarto TEXT NOT NULL,
   caracteristicas TEXT NOT NULL,
   equipamentos TEXT NOT NULL,
   quant_itens INT NOT NULL,
   descrição TEXT NOT NULL
 );
-create table funcionarios(
-  id INT primary key autoincrement,
+
+create table if not EXISTS funcionarios(
+  id INTEGER primary key autoincrement,
   nome TEXT NOT NULL,
   cpf TEXT NOT NULL,
   data_nasc DATE NOT NULL,
@@ -36,23 +38,23 @@ create table funcionarios(
   cep TEXT NOT NULL,
   sexo TEXT NOT NULL,
   grau_instrução TEXT NOT NULL,
-  pis/pasep TEXT NOT NULL,
+  pis_pasep TEXT NOT NULL,
   data_adm date NOT NULL,
   Cart_trabalho TEXT NOT NULL,
   serie TEXT NOT NULL,
   setor TEXT NOT NULL
 );
 
-create table fornecedor(
-  id INT primary key autoincrement,
+create table IF NOT EXISTS fornecedor(
+  id integer primary key autoincrement,
   nome_completo TEXT NOT NULL,
   cnpj TEXT NOT NULL,
-  fabricante TEXT NOT,
+  fabricante TEXT NOT NULL,
   endereço TEXT NOT NULL
-  );
+);
 
-create table servico(
-  id INT primary key autoincrement,
+create table IF NOT EXISTS servico(
+  id INTEGER primary key autoincrement,
   nome_servico TEXT NOT NULL,
   quantidade INT NOT NULL,
   tipo_servico TEXT NOT NULL,
@@ -60,8 +62,8 @@ create table servico(
   FOREIGN KEY (quarto_id) REFERENCES quarto(numero)
 );
 
-create table produto(
-  id INT primary key autoincrement,
+create table IF NOT EXISTS produto(
+  id INTEGER primary key autoincrement,
   descricao TEXT NOT NULL,
   nome_produto TEXT NOT NULL,
   fornecedor INT NOT NULL,
@@ -74,3 +76,7 @@ create table produto(
   codigo_fabricante TEXT NOT NULL,
   FOREIGN KEY (fornecedor) REFERENCES fornecedor(id)
 );
+
+--INSERT into produto(descricao, nome_produto, fornecedor, codigo_produto, unidade_medida, data_entrega, preco_compra, preco_venda, quantidade, codigo_fabricante)
+--VALUES('refrigerante de fanta','fanta lata','fanta brasil','55','ml','12/12/24','2,0','5,0','25','112423')
+SELECT * FROM produto
