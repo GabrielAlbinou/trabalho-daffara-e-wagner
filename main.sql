@@ -77,6 +77,24 @@ create table IF NOT EXISTS produto(
   FOREIGN KEY (fornecedor) REFERENCES fornecedor(id)
 );
 
+create table if not EXISTS checkin(
+  id integer primary key AUTOINCREMENT,
+  numero_quarto TEXT NOT NULL,
+  data_en TEXT NOT NULL,
+  data_sai TEXT NOT NULL,
+  statu TEXT NOT NULL,
+  FOREIGN KEY (numero_quarto) REFERENCES quarto(numero)
+);
+
+create table if not EXISTS checkout(
+  id integer primary key AUTOINCREMENT,
+  numero_quarto TEXT NOT NULL,
+  data_en TEXT NOT NULL,
+  data_sai TEXT NOT NULL,
+  total_pagamento TEXT NOT NULL,
+  statu TEXT NOT NULL,
+  FOREIGN KEY (numero_quarto) REFERENCES quarto(numero)
+);
 --INSERT into produto(descricao, nome_produto, fornecedor, codigo_produto, unidade_medida, data_entrega, preco_compra, preco_venda, quantidade, codigo_fabricante)
 --VALUES('refrigerante de fanta','fanta lata','fanta brasil','55','ml','12/12/24','2,0','5,0','25','112423')
 SELECT * FROM produto

@@ -91,3 +91,19 @@ function cadastro_tipo_quarto() {
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('id_quarto').value = gerarIdQuarto();
 });
+
+function cadastro_ci() {
+    const id_checkin = document.getElementById('id_cl').value;
+    const n_quarto = document.getElementById('numero_quarto').value;
+    const dt_en = document.getElementById('data_en').value;
+    const dt_sa = document.getElementById('data_sa').value;
+    const status = document.getElementById('st').value;
+}
+function cadastro_co() {
+    const id_checkout = document.getElementById('id_cl').value;
+    const n_quarto = document.getElementById('numero_quarto').value;
+    const dt_en = document.getElementById('data_en').value;
+    const dt_sa = document.getElementById('data_sa').value;
+    const total = document.getElementById('tp').value;
+    const status = document.getElementById('st').value;
+}
