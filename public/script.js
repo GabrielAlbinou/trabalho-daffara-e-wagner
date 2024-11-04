@@ -1,4 +1,4 @@
-async function cadastro_cl() {
+async function cadastrar_cl() {
     const na_cl = document.getElementById("name_cl").value;
     const email_cl = document.getElementById("email_cl").value;
     const phone_cl = document.getElementById("phone_cl").value;
@@ -10,7 +10,7 @@ async function cadastro_cl() {
     const estado_cl = document.getElementById("estado_cl").value;
     const cidade_cl = document.getElementById("cidade_cl").value;
 
-    await fetch("/cadastrar-cl", {
+    await fetch("/cadastrar_cl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -30,7 +30,7 @@ async function cadastro_cl() {
     alert("Cliente cadastrado com sucesso!");
 }
 
-async function cadastro_prod() {
+async function cadastrar_prod() {
     const desc = document.getElementById("descricao").value;
     const nome = document.getElementById("nome").value;
     const forn = document.getElementById("fornecedor").value;
@@ -42,7 +42,7 @@ async function cadastro_prod() {
     const qnt_prod = document.getElementById("quantidade").value;
     const cod_fabr = document.getElementById("codigo_fabricante").value;
 
-    await fetch("/cadastrar-prod", {
+    await fetch("/cadastrar_prod", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -55,20 +55,20 @@ async function cadastro_prod() {
             comp,
             vend,
             qnt_prod,
-            cod_fabr,
+            cod_fabr
         }),
     });
 
     alert("Produto cadastrado com sucesso!");
 }
 
-async function cadastro_fornecedor() {
+async function cadastrar_fornecedor() {
     const nc = document.getElementById("nome_completo").value;
     const cnpj = document.getElementById("cnpj").value;
     const fabr = document.getElementById("fabricante").value;
     const end = document.getElementById("endereco").value;
 
-    await fetch("/cadastrar-fornecedor", {
+    await fetch("/cadastrar_fornecedor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nc, cnpj, fabr, end }),
@@ -77,8 +77,7 @@ async function cadastro_fornecedor() {
     alert("Fornecedor cadastrado com sucesso!");
 }
 
-async function cadastro_funcionario() {
-    const func_id = document.getElementById("id_funcionario").value;
+async function cadastrar_funcionario() {
     const func_nm = document.getElementById("nome").value;
     const func_cpf = document.getElementById("cpf").value;
     const func_nasc = document.getElementById("data_nascimento").value;
@@ -95,11 +94,10 @@ async function cadastro_funcionario() {
     const func_serie = document.getElementById("serie").value;
     const func_set = document.getElementById("setor").value;
 
-    await fetch("/cadastrar-funcionario", {
+    await fetch("/cadastrar_funcionario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            func_id,
             func_nm,
             func_cpf,
             func_nasc,
@@ -125,11 +123,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById("id_funcionario").value = gerarIdFuncionario();
 });
 
-async function cadastro_quarto() {
+async function cadastrar_quarto() {
     const num_q = document.getElementById("numero_quarto").value;
     const tp_quarto = document.getElementById("tipo_quarto").value;
 
-    await fetch("/cadastrar-quarto", {
+    await fetch("/cadastrar_quarto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ num_q, tp_quarto }),
@@ -138,13 +136,13 @@ async function cadastro_quarto() {
     alert("Quarto cadastrado com sucesso!");
 }
 
-async function cadastro_servico() {
+async function cadastrar_servico() {
     const nm_ser = document.getElementById("nome_servico").value;
     const qnt_ser = document.getElementById("quantidade").value;
     const tp_ser = document.getElementById("tipo_servico").value;
     const id_ser = document.getElementById("id_quarto").value;
 
-    await fetch("/cadastrar-servico", {
+    await fetch("/cadastrar_servico", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nm_ser, qnt_ser, tp_ser, id_ser }),
@@ -153,11 +151,7 @@ async function cadastro_servico() {
     alert("Serviço cadastrado com sucesso!");
 }
 
-function gerarIdQuarto() {
-    return Math.floor(Math.random() * 10000); // Gera um ID aleatório entre 0 e 9999
-}
-
-async function cadastro_tipo_quarto() {
+async function cadastrar_tipo_quarto() {
     const id_quarto = document.getElementById("id_quarto").value;
     const tp_qto = document.getElementById("tipo_quarto").value;
     const cara_quarto = document.getElementById("caracteristicas").value;
@@ -165,7 +159,7 @@ async function cadastro_tipo_quarto() {
     const qnt_itens = document.getElementById("quantidade_itens").value;
     const desc_quarto = document.getElementById("descricao").value;
 
-    await fetch("/cadastrar-tipo-quarto", {
+    await fetch("/cadastrar_tipo_quarto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -185,14 +179,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById("id_quarto").value = gerarIdQuarto();
 });
 
-async function cadastro_ci() {
+async function cadastrar_ci() {
     const id_checkin = document.getElementById("id_cl").value;
     const n_quarto = document.getElementById("numero_quarto").value;
     const dt_en = document.getElementById("data_en").value;
     const dt_sa = document.getElementById("data_sa").value;
     const status = document.getElementById("st").value;
 
-    await fetch("/cadastrar-ci", {
+    await fetch("/cadastrar_ci", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id_checkin, n_quarto, dt_en, dt_sa, status }),
@@ -200,7 +194,7 @@ async function cadastro_ci() {
 
     alert("Check-in cadastrado com sucesso!");
 }
-async function cadastro_co() {
+async function cadastrar_co() {
     const id_checkout = document.getElementById("id_cl").value;
     const n_quarto = document.getElementById("numero_quarto").value;
     const dt_en = document.getElementById("data_en").value;
@@ -208,7 +202,7 @@ async function cadastro_co() {
     const total = document.getElementById("tp").value;
     const status = document.getElementById("st").value;
 
-    await fetch("/cadastrar-co", {
+    await fetch("/cadastrar_co", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -217,7 +211,7 @@ async function cadastro_co() {
             dt_en,
             dt_sa,
             total,
-            status,
+            status
         }),
     });
 

@@ -62,7 +62,7 @@ db.serialize(() => {
             caracteristicas TEXT NOT NULL,
             equipamentos TEXT NOT NULL,
             quant_itens INT NOT NULL,
-            descrição TEXT NOT NULL
+            descricao TEXT NOT NULL
         )
     `, (err) => {
         if (err) {
@@ -81,10 +81,10 @@ db.serialize(() => {
             data_nasc DATE NOT NULL,
             municipio TEXT NOT NULL,
             uf TEXT NOT NULL,
-            endereço TEXT NOT NULL,
+            endereco TEXT NOT NULL,
             cep TEXT NOT NULL,
             sexo TEXT NOT NULL,
-            grau_instrução TEXT NOT NULL,
+            grau_instrucao TEXT NOT NULL,
             pis_pasep TEXT NOT NULL,
             data_adm DATE NOT NULL,
             Cart_trabalho TEXT NOT NULL,
@@ -106,7 +106,7 @@ db.serialize(() => {
             nome_completo TEXT NOT NULL,
             cnpj TEXT NOT NULL,
             fabricante TEXT NOT NULL,
-            endereço TEXT NOT NULL
+            endereco TEXT NOT NULL
         )
     `, (err) => {
         if (err) {
@@ -165,7 +165,7 @@ db.serialize(() => {
             numero_quarto TEXT NOT NULL,
             data_en TEXT NOT NULL,
             data_sai TEXT NOT NULL,
-            statu TEXT NOT NULL,
+            status TEXT NOT NULL,
             FOREIGN KEY (numero_quarto) REFERENCES quartos(numero)
         )
     `, (err) => {
@@ -184,7 +184,7 @@ db.serialize(() => {
             data_en TEXT NOT NULL,
             data_sai TEXT NOT NULL,
             total_pagamento TEXT NOT NULL,
-            statu TEXT NOT NULL,
+            status TEXT NOT NULL,
             FOREIGN KEY (numero_quarto) REFERENCES quartos(numero)
         )
     `, (err) => {
@@ -206,10 +206,28 @@ db.all("SELECT * FROM produtos", (err, rows) => {
 });
 
 // Rota para cadastrar um cliente
-app.post('/cadastrar-cliente', (req, res) => {
-    const { nome, email, telefone, tipo_telefone, endereco, documento, tipo_documento, codigo_cliente, estado, cidade } = req.body;
-    db.run(`INSERT INTO clientes (nome, email, telefone, tipo_telefone, endereço, documento, tipo_documento, codigo_cliente, estado, cidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [nome, email, telefone, tipo_telefone, endereco, documento, tipo_documento, codigo_cliente, estado, cidade],
+app.post('/cadastrar_cl', (req, res) => {
+    const { na_cl,
+               email_cl,
+               phone_cl,
+               phoneType_cl,
+               address_cl,
+               Doc_cl,
+               tp_doc_cl,
+               codigo_cl,
+               estado_cl,
+               cidade_cl, } = req.body;
+    db.run(`INSERT INTO clientes (nome, email, telefone, tipo_telefone, endereco, documento, tipo_documento, codigo_cliente, estado, cidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [na_cl,
+             email_cl,
+             phone_cl,
+             phoneType_cl,
+             address_cl,
+             Doc_cl,
+             tp_doc_cl,
+             codigo_cl,
+             estado_cl,
+             cidade_cl],
         (err) => {
             if (err) {
                 console.error('Erro ao cadastrar cliente:', err);
@@ -221,9 +239,9 @@ app.post('/cadastrar-cliente', (req, res) => {
 });
 
 // Rota para cadastrar um quarto
-app.post('/cadastrar-quarto', (req, res) => {
-    const { numero, tipo_quarto_id } = req.body;
-    db.run(`INSERT INTO quartos (numero, tipo_quarto_id) VALUES (?, ?)`, [numero, tipo_quarto_id], (err) => {
+app.post('/cadastrar_quarto', (req, res) => {
+    const { num_q, tp_quarto  } = req.body;
+    db.run(`INSERT INTO quartos (numero, tipo_quarto_id) VALUES (?, ?)`, [ num_q, tp_quarto ], (err) => {
         if (err) {
             console.error('Erro ao cadastrar quarto:', err);
             res.status(500).send('Erro ao cadastrar quarto');
@@ -235,9 +253,19 @@ app.post('/cadastrar-quarto', (req, res) => {
 
 // Rota para cadastrar um tipo de quarto
 app.post('/cadastrar-tipo-quarto', (req, res) => {
-    const { tipo_quarto, caracteristicas, equipamentos, quant_itens, descrição } = req.body;
-    db.run(`INSERT INTO tipos_quartos (tipo_quarto, caracteristicas, equipamentos, quant_itens, descrição) VALUES (?, ?, ?, ?, ?)`,
-        [tipo_quarto, caracteristicas, equipamentos, quant_itens, descrição], (err) => {
+    const { id_quarto,
+              tp_qto,
+              cara_quarto,
+              equi_quarto,
+              qnt_itens,
+              desc_quarto } = req.body;
+    db.run(`INSERT INTO tipos_quartos (tipo_quarto, caracteristicas, equipamentos, quant_itens, descricao) VALUES (?, ?, ?, ?, ?)`,
+        [id_quarto,
+            tp_qto,
+            cara_quarto,
+            equi_quarto,
+            qnt_itens,
+            desc_quarto], (err) => {
             if (err) {
                 console.error('Erro ao cadastrar tipo de quarto:', err);
                 res.status(500).send('Erro ao cadastrar tipo de quarto');
@@ -248,10 +276,38 @@ app.post('/cadastrar-tipo-quarto', (req, res) => {
 });
 
 // Rota para cadastrar um funcionário
-app.post('/cadastrar-funcionario', (req, res) => {
-    const { nome, cpf, data_nasc, municipio, uf, endereço, cep, sexo, grau_instrução, pis_pasep, data_adm, Cart_trabalho, serie, setor } = req.body;
-    db.run(`INSERT INTO funcionarios (nome, cpf, data_nasc, municipio, uf, endereço, cep, sexo, grau_instrução, pis_pasep, data_adm, Cart_trabalho, serie, setor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [nome, cpf, data_nasc, municipio, uf, endereço, cep, sexo, grau_instrução, pis_pasep, data_adm, Cart_trabalho, serie, setor],
+app.post('/cadastrar_funcionario', (req, res) => {
+    const {   func_nm,
+              func_cpf,
+              func_nasc,
+              func_muni,
+              func_uf,
+              func_end,
+              func_cep,
+              func_sex,
+              func_pes,
+              func_grau,
+              func_pis,
+              func_data_ad,
+              func_cart,
+              func_serie,
+              func_set } = req.body;
+    db.run(`INSERT INTO funcionarios (nome, cpf, data_nasc, municipio, uf, endereco, cep, sexo, grau_instrucao, pis_pasep, data_adm, Cart_trabalho, serie, setor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [   func_nm,
+            func_cpf,
+            func_nasc,
+            func_muni,
+            func_uf,
+            func_end,
+            func_cep,
+            func_sex,
+            func_pes,
+            func_grau,
+            func_pis,
+            func_data_ad,
+            func_cart,
+            func_serie,
+            func_set],
         (err) => {
             if (err) {
                 console.error('Erro ao cadastrar funcionário:', err);
@@ -263,10 +319,10 @@ app.post('/cadastrar-funcionario', (req, res) => {
 });
 
 // Rota para cadastrar um fornecedor
-app.post('/cadastrar-fornecedor', (req, res) => {
-    const { nome_completo, cnpj, fabricante, endereço } = req.body;
-    db.run(`INSERT INTO fornecedores (nome_completo, cnpj, fabricante, endereço) VALUES (?, ?, ?, ?)`,
-        [nome_completo, cnpj, fabricante, endereço], (err) => {
+app.post('/cadastrar_fornecedor', (req, res) => {
+    const { nc, cnpj, fabr, end } = req.body;
+    db.run(`INSERT INTO fornecedores (nome_completo, cnpj, fabricante, endereco) VALUES (?, ?, ?, ?)`,
+        [nc, cnpj, fabr, end], (err) => {
             if (err) {
                 console.error('Erro ao cadastrar fornecedor:', err);
                 res.status(500).send('Erro ao cadastrar fornecedor');
@@ -277,10 +333,10 @@ app.post('/cadastrar-fornecedor', (req, res) => {
 });
 
 // Rota para cadastrar um serviço
-app.post('/cadastrar-servico', (req, res) => {
-    const { nome_servico, quantidade, tipo_servico, quarto_id } = req.body;
+app.post('/cadastrar_servico', (req, res) => {
+    const { nm_ser, qnt_ser, tp_ser, id_ser} = req.body;
     db.run(`INSERT INTO serviços (nome_servico, quantidade, tipo_servico, quarto_id) VALUES (?, ?, ?, ?)`,
-        [nome_servico, quantidade, tipo_servico, quarto_id], (err) => {
+        [nm_ser, qnt_ser, tp_ser, id_ser], (err) => {
             if (err) {
                 console.error('Erro ao cadastrar serviço:', err);
                 res.status(500).send('Erro ao cadastrar serviço');
@@ -291,10 +347,28 @@ app.post('/cadastrar-servico', (req, res) => {
 });
 
 // Rota para cadastrar um produto
-app.post('/cadastrar-produto', (req, res) => {
-    const { descricao, nome_produto, fornecedor, codigo_produto, unidade_medida, data_entrega, preco_compra, preco_venda, quantidade, codigo_fabricante } = req.body;
+app.post('/cadastrar_produto', (req, res) => {
+    const {  desc,
+              nome,
+              forn,
+              codi,
+              unid,
+              data,
+              comp,
+              vend,
+              qnt_prod,
+              cod_fabr } = req.body;
     db.run(`INSERT INTO produtos (descricao, nome_produto, fornecedor, codigo_produto, unidade_medida, data_entrega, preco_compra, preco_venda, quantidade, codigo_fabricante) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [descricao, nome_produto, fornecedor, codigo_produto, unidade_medida, data_entrega, preco_compra, preco_venda, quantidade, codigo_fabricante], (err) => {
+        [ desc,
+            nome,
+            forn,
+            codi,
+            unid,
+            data,
+            comp,
+            vend,
+            qnt_prod,
+            cod_fabr], (err) => {
             if (err) {
                 console.error('Erro ao cadastrar produto:', err);
                 res.status(500).send('Erro ao cadastrar produto');
@@ -305,10 +379,10 @@ app.post('/cadastrar-produto', (req, res) => {
 });
 
 // Rota para cadastrar um checkin
-app.post('/cadastrar-checkin', (req, res) => {
-    const { numero_quarto, data_en, data_sai, statu } = req.body;
-    db.run(`INSERT INTO checkins (numero_quarto, data_en, data_sai, statu) VALUES (?, ?, ?, ?)`,
-        [numero_quarto, data_en, data_sai, statu], (err) => {
+app.post('/cadastrar_ci', (req, res) => {
+    const {id_checkin, n_quarto, dt_en, dt_sa, status} = req.body;
+    db.run(`INSERT INTO checkins (numero_quarto, data_en, data_sai, status) VALUES (?, ?, ?, ?)`,
+        [id_checkin, n_quarto, dt_en, dt_sa, status], (err) => {
             if (err) {
                 console.error('Erro ao cadastrar checkin:', err);
                 res.status(500).send('Erro ao cadastrar checkin');
@@ -319,10 +393,20 @@ app.post('/cadastrar-checkin', (req, res) => {
 });
 
 // Rota para cadastrar um checkout
-app.post('/cadastrar-checkout', (req, res) => {
-    const { numero_quarto, data_en, data_sai, statu } = req.body;
-    db.run(`INSERT INTO checkouts (numero_quarto, data_en, data_sai, statu) VALUES (?, ?, ?, ?)`,
-        [numero_quarto, data_en, data_sai, statu], (err) => {
+app.post('/cadastrar_co', (req, res) => {
+    const { id_checkout,
+              n_quarto,
+              dt_en,
+              dt_sa,
+              total,
+              status } = req.body;
+    db.run(`INSERT INTO checkouts (numero_quarto, data_en, data_sai, status) VALUES (?, ?, ?, ?)`,
+        [id_checkout,
+            n_quarto,
+            dt_en,
+            dt_sa,
+            total,
+            status], (err) => {
             if (err) {
                 console.error('Erro ao cadastrar checkout:', err);
                 res.status(500).send('Erro ao cadastrar checkout');
