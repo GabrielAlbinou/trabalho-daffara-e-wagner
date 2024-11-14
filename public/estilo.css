@@ -162,3 +162,24 @@ h1 {
 .header a:hover {
   text-decoration: underline;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
+    .inicial{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #839ac9;
+      font-family: "Host Grotesk", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: <weight>;
+      font-style: normal;
+    }
+    .ape{
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      width: 60%;
+      padding: 20px;
+    }

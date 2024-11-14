@@ -106,13 +106,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 async function cadastrar_quarto() {
-    const num_q = document.getElementById('numero_quarto').value;
+    const num_q = document.getElementById('numero_quarto').value
+    const status = document.getElementById('status_quarto').value;
     const tp_quarto = document.getElementById('tipo_quarto').value;
+    
 
     await fetch('/cadastrar_quarto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ num_q, tp_quarto })
+        body: JSON.stringify({ num_q, status, tp_quarto })
     });
 
     alert('Quarto cadastrado com sucesso!');
@@ -149,29 +151,27 @@ async function cadastrar_tipo_quarto() {
 
     alert('Tipo de quarto cadastrado com sucesso!');
 }
-
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('id_quarto').value = gerarIdQuarto();
 });
 
 async function cadastrar_ci() {
-    const id_checkin = document.getElementById('id').value;
     const id_cliente = document.getElementById('id_cl').value;
     const n_quarto = document.getElementById('numero_quarto').value;
     const dt_en = document.getElementById('data_en').value;
     const dt_sa = document.getElementById('data_sa').value;
     const status = document.getElementById('st').value;
-
+   
     await fetch('/cadastrar_ci', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_checkin, n_quarto, dt_en, dt_sa, status })
+        body: JSON.stringify({id_cliente, n_quarto, dt_en, dt_sa, status })
     });
 
     alert('Check-in cadastrado com sucesso!');
 }
 async function cadastrar_co() {
-    const id_checkout = document.getElementById('id_cl').value;
+    const id_cliente2 = document.getElementById('id_cl2').value;
     const n_quarto = document.getElementById('numero_quarto').value;
     const dt_en = document.getElementById('data_en').value;
     const dt_sa = document.getElementById('data_sa').value;
@@ -182,7 +182,7 @@ async function cadastrar_co() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            id_checkout,
+            id_cliente2,
             n_quarto,
             dt_en,
             dt_sa,

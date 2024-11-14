@@ -41,7 +41,8 @@ db.serialize(() => {
     // Criar a tabela quartos
     db.run(`
         CREATE TABLE IF NOT EXISTS quartos (
-            numero INTEGER PRIMARY KEY UNIQUE,
+            numero TEXT PRIMARY KEY UNIQUE,
+            status TEXT NOT NULL,
             tipo_quarto_id TEXT NOT NULL,
             FOREIGN KEY (tipo_quarto_id) REFERENCES tipo_quarto(id)
         )
@@ -156,7 +157,8 @@ db.serialize(() => {
             data_en TEXT NOT NULL,
             data_sai TEXT NOT NULL,
             status TEXT NOT NULL,        
-            FOREIGN KEY (numero_quarto) REFERENCES quartos(numero)
+            FOREIGN KEY (numero_quarto) REFERENCES quartos(numero),
+            FOREIGN KEY (id_cliente) REFERENCES clientes(documento)
         )
     `, (err) => {
         if (err) {
@@ -170,12 +172,15 @@ db.serialize(() => {
     db.run(`
         CREATE TABLE IF NOT EXISTS checkouts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_cliente2 TEXT NOT NULL,
             numero_quarto TEXT NOT NULL,
-            data_en TEXT NOT NULL,
-            data_sai TEXT NOT NULL,
+            data_entrada TEXT NOT NULL,
+            data_saida TEXT NOT NULL,
             total_pagamento TEXT NOT NULL,
             status TEXT NOT NULL,
-            FOREIGN KEY (numero_quarto) REFERENCES quartos(numero)
+            FOREIGN KEY (numero_quarto) REFERENCES quartos(numero),
+            FOREIGN KEY (id_cliente2) REFERENCES clientes(documento),
+            FOREIGN KEY (data_entrada) REFERENCES checkins(data_en)
         )
     `, (err) => {
         if (err) {
@@ -228,8 +233,8 @@ app.post('/cadastrar_cl', (req, res) => {
 
 // Rota para cadastrar um quarto
 app.post('/cadastrar_quarto', (req, res) => {
-    const { num_q, tp_quarto  } = req.body;
-    db.run(`INSERT INTO quartos (numero, tipo_quarto_id) VALUES (?, ?)`, [ num_q, tp_quarto ], (err) => {
+    const { num_q, status, tp_quarto  } = req.body;
+    db.run(`INSERT INTO quartos (numero, status, tipo_quarto_id) VALUES (?, ?, ?)`, [ num_q, status, tp_quarto ], (err) => {
         if (err) {
             console.error('Erro ao cadastrar quarto:', err);
             res.status(500).send('Erro ao cadastrar quarto');
@@ -346,9 +351,9 @@ app.post('/cadastrar_prod', (req, res) => {
 
 // Rota para cadastrar um checkin
 app.post('/cadastrar_ci', (req, res) => {
-    const {id_checkin, n_quarto, dt_en, dt_sa, status} = req.body;
-    db.run(`INSERT INTO checkins (numero_quarto, data_en, data_sai, status) VALUES (?, ?, ?, ?)`,
-        [id_checkin, n_quarto, dt_en, dt_sa, status], (err) => {
+    const {id_cliente, n_quarto, dt_en, dt_sa, status } = req.body;
+    db.run(`INSERT INTO checkins (id_cliente, numero_quarto, data_en, data_sai, status) VALUES (?, ?, ?, ?, ?)`,
+        [id_cliente, n_quarto, dt_en, dt_sa, status ], (err) => {
             if (err) {
                 console.error('Erro ao cadastrar checkin:', err);
                 res.status(500).send('Erro ao cadastrar checkin');
@@ -409,14 +414,14 @@ app.get('/consultar-checkin', (req, res) => {
 
 // Rota para cadastrar um checkout
 app.post('/cadastrar_co', (req, res) => {
-    const { id_checkout,
+    const {  id_cliente2,
               n_quarto,
               dt_en,
               dt_sa,
               total,
               status } = req.body;
-    db.run(`INSERT INTO checkouts (numero_quarto, data_en, data_sai, status) VALUES (?, ?, ?, ?)`,
-        [id_checkout,
+    db.run(`INSERT INTO checkouts (id_cliente2,numero_quarto, data_entrada, data_saida, status) VALUES (?, ?, ?, ?, ?)`,
+        [  id_cliente2,
             n_quarto,
             dt_en,
             dt_sa,
